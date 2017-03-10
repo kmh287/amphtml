@@ -700,6 +700,12 @@ next:function () {
         }
         var rules = this._currentRules();
         for (var i = 0; i < rules.length; i++) {
+            const checkStr = this.ruleStrs[i];
+            if (checkStr) {
+                if (this._input.indexOf(checkStr)  == -1) {
+                    continue;
+                }
+            }
             tempMatch = this._input.match(this.rules[rules[i]]);
             if (tempMatch && (!match || tempMatch[0].length > match[0].length)) {
                 match = tempMatch;
@@ -866,6 +872,7 @@ case 33:return 5
 break;
 }
 },
+ruleStrs: ['', 'null', 'true', 'false', '', '', '\'', '"', '+', '-', '*', '/', '&&', '||', '!=', '==', '<=', '<', '>=', '>', '!', '?', ':', '%', '[', ']', '{', '}', '(', ')', ',', '', '', ''],
 rules: [/^(?:\s+)/,/^(?:null\b)/,/^(?:true\b)/,/^(?:false\b)/,/^(?:[0-9]+(\.[0-9]+)?\b)/,/^(?:[a-zA-Z_][a-zA-Z0-9_]*)/,/^(?:'[^\']*')/,/^(?:"[^\"]*")/,/^(?:\+)/,/^(?:-)/,/^(?:\*)/,/^(?:\/)/,/^(?:&&)/,/^(?:\|\|)/,/^(?:!=)/,/^(?:==)/,/^(?:<=)/,/^(?:<)/,/^(?:>=)/,/^(?:>)/,/^(?:!)/,/^(?:\?)/,/^(?::)/,/^(?:%)/,/^(?:\[)/,/^(?:\])/,/^(?:\{)/,/^(?:\})/,/^(?:\()/,/^(?:\))/,/^(?:,)/,/^(?:\.)/,/^(?:.)/,/^(?:$)/],
 conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33],"inclusive":true}}
 });
